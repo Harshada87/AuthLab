@@ -1,7 +1,8 @@
-package com.example.authlab
+package com.example.authlab.data
 
 import android.content.Context
 import android.util.Base64
+import com.example.authlab.crypto.EncryptedData
 
 
 private const val PREFS = "authlab_vault"

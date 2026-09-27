@@ -1,4 +1,4 @@
-package com.example.authlab
+package com.example.authlab.crypto
 
 data class EncryptedData(
     val ciphertext: ByteArray,

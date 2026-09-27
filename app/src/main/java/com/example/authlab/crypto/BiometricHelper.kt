@@ -1,4 +1,4 @@
-package com.example.authlab
+package com.example.authlab.crypto
 
 import android.content.Context
 import androidx.biometric.BiometricManager

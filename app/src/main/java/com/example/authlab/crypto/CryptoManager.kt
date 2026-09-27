@@ -1,4 +1,4 @@
-package com.example.authlab
+package com.example.authlab.crypto
 
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties

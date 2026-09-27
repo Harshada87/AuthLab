@@ -1,4 +1,6 @@
-package com.example.authlab
+package com.example.authlab.ui
+
+import com.example.authlab.model.User
 
 sealed interface LoginUiState {
     data object Loading: LoginUiState

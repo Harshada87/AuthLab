@@ -1,4 +1,4 @@
-package com.example.authlab
+package com.example.authlab.ui
 
 
 import androidx.compose.foundation.layout.Box

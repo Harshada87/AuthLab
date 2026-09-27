@@ -1,14 +1,16 @@
-package com.example.authlab
+package com.example.authlab.ui
 
 import android.app.Application
 import android.util.Base64
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.delay
+import com.example.authlab.crypto.EncryptedData
+import com.example.authlab.crypto.decryptWith
+import com.example.authlab.crypto.encryptWith
+import com.example.authlab.data.loadEncrypted
+import com.example.authlab.data.saveEncrypted
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.launch
 import javax.crypto.Cipher
 
 class LoginViewModel (application: Application) : AndroidViewModel(application){
@@ -21,7 +23,7 @@ class LoginViewModel (application: Application) : AndroidViewModel(application){
         val saved = loadEncrypted(getApplication())
         if(saved != null){
             stored = saved
-            val preview = android.util.Base64
+            val preview = Base64
                 .encodeToString(saved.ciphertext, Base64.NO_WRAP).take(24)
             _uiState.value = LoginUiState.Locked(preview)
         }
@@ -36,7 +38,7 @@ class LoginViewModel (application: Application) : AndroidViewModel(application){
     fun onNoteLocked(unlockedCipher: Cipher, note: String) {
         val enc = encryptWith(unlockedCipher, note)
         stored = enc
-        saveEncrypted(getApplication(),enc)
+        saveEncrypted(getApplication(), enc)
         val preview = Base64.encodeToString(enc.ciphertext, Base64.NO_WRAP).take(24)
         _uiState.value = LoginUiState.Locked(preview)
     }
